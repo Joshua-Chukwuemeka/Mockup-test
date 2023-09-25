@@ -1,0 +1,165 @@
+.container{
+  width: 100%;
+}
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #ffff;
+  width: 100%;
+  height: 887px;
+  margin: 0 3rem;
+  box-shadow: 0px 1px 2px #00000029;
+}
+
+.table-search {
+  display: flex;
+  margin-bottom: 1.3rem;
+  width: 90%;
+  height: 65px;
+}
+
+.shares {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 65px;
+}
+
+.shares-container {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+img {
+  width: 26px;
+  height: 30px;
+  margin-right: 1rem;
+}
+
+
+.table{
+  width: 90%;
+  height: 762px;
+  border: 2px solid #d3d3d3;
+}
+
+table{
+  width: 100%;
+  table-layout: fixed;
+}
+
+thead th{
+  position: sticky;
+  top: 0;
+
+  background-color: #F3F3F7;
+  font-size: 15px;
+}
+
+.action{
+  display: flex;
+}
+
+th, td{
+  //border-bottom: 1px solid #d3d3d3;
+  word-break: break-all;
+  text-align: start;
+}
+
+h5{
+  color: #49d3ff;
+}
+
+.button{
+  background: #49d3ff;
+  color: #1b1464;
+  font-size: 1.1rem;
+  width: 152px;
+  height: 26px;
+  border: none;
+  margin-right: 3rem;
+  border-radius: 3px;
+  margin-top: 0.4rem;
+  transition: all .2s ease;
+  cursor: pointer;
+
+  &:hover{
+    transform: scale(1.1);
+  }
+}
+
+mat-form-field{
+  margin-left: 3rem;
+}
+
+th{
+  background: #B3B3B480;
+  color: #000B14;
+}
+
+tr.mat-header-row{
+  height: 57px;
+}
+
+tr.mat-row{
+  height: 50px;
+  text-align: start;
+  padding: 10px 20px;
+}
+
+@media screen and (max-width: 1150px){
+  .button{
+    width: 240px;
+  }
+  table{
+    width: 65rem;
+    margin-bottom: 3rem;
+  }
+
+  .shares{
+    width: 65rem;
+  }
+
+}
+
+
+@media screen and (max-width: 1200px){
+  .content {
+    background: #ffff;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    box-shadow: 0px 1px 2px #00000029;
+  }
+
+  .table-search{
+    display: flex;
+    margin-top: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 30vh;
+  }
+  mat-form-field{
+    margin:0 0.5rem;
+  }
+
+  .table{
+    margin-top: 6rem;
+    margin-bottom: 1rem;
+    padding: 10px 20px;
+    overflow: scroll;
+    border: 2px solid #d3d3d3;
+  }
+
+
+}
+
+
+
+
+

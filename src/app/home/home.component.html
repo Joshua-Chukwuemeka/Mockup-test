@@ -1,0 +1,188 @@
+<div class="container">
+  <app-navbar></app-navbar>
+  <app-menu></app-menu>
+  <app-card></app-card>
+  <div class="content">
+    <div class="table-search">
+      <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Enter search keyword</mat-label>
+          <input
+            matInput
+            #message
+            maxlength="256"
+            placeholder="Ex. I need help with..."
+          />
+        </mat-form-field>
+      </form>
+      <mat-form-field appearance="fill">
+        <mat-label>All application</mat-label>
+        <mat-select>
+          <mat-option value="option1">Option 1</mat-option>
+          <mat-option value="option2">Option 2</mat-option>
+          <mat-option value="option3">Option 3</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>All servers</mat-label>
+        <mat-select>
+          <mat-option value="option1">Option 1</mat-option>
+          <mat-option value="option2">Option 2</mat-option>
+          <mat-option value="option3">Option 3</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Health check status</mat-label>
+        <mat-select>
+          <mat-option value="option1">Option 1</mat-option>
+          <mat-option value="option2">Option 2 </mat-option>
+          <mat-option value="option3">Option 3</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="table">
+      <div class="shares">
+        <div class="shares-container">
+          <img src="../../assets/PDF@2x.png" alt="" />
+          <img src="../../assets/xls@2x.png" alt="" />
+          <span>Showing 10 of 5000 Entries</span>
+        </div>
+      </div>
+
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z3">
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="no">
+          <th mat-header-cell *matHeaderCellDef>S/N</th>
+          <td mat-cell *matCellDef="let element">{{ element.no }}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="application">
+          <th mat-header-cell *matHeaderCellDef>Application</th>
+          <td mat-cell *matCellDef="let element">{{ element.application }}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="server">
+          <th mat-header-cell *matHeaderCellDef>Sever Mapped</th>
+          <td mat-cell *matCellDef="let element">
+            <h5>{{ element.server }}</h5>
+          </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="lastScan">
+          <th mat-header-cell *matHeaderCellDef>Last Scan</th>
+          <td mat-cell *matCellDef="let element">{{ element.lastScan }}</td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let element">
+            <span><img src="../../assets/triangle.png" alt="" /></span>
+          </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="action">
+              <button class="button" (click)="resultDialog()">{{ element.action }}</button
+              ><button  mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+
+
+      <mat-menu #menu="matMenu">
+        <button (click)="openDialog('0ms', '0ms')" mat-menu-item>
+          <span>Deactivate</span>
+        </button>
+
+      </mat-menu>
+
+      <!-- <div class="table-section">
+        <table>
+          <thead>
+            <tr>
+              <th>S/N</th>
+              <th>APPLICATION</th>
+              <th>SERVER MAPPED</th>
+              <th>LAST SCAN DATE</th>
+              <th>STATUS</th>
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Application name goes here</td>
+              <td>3 Servers</td>
+              <td>11/12/2020 3: 57:29PM</td>
+              <td>Healthy</td>
+              <td><button>View result</button></td>
+            </tr>
+
+            <tr>
+              <td>2</td>
+              <td>Application name goes here</td>
+              <td>3 Servers</td>
+              <td>11/12/2020 3: 57:29PM</td>
+              <td>Healthy</td>
+              <td><button>View result</button></td>
+            </tr>
+
+            <tr>
+              <td>3</td>
+              <td>Application name goes here</td>
+              <td>3 Servers</td>
+              <td>11/12/2020 3: 57:29PM</td>
+              <td>Healthy</td>
+              <td><button>View result</button></td>
+            </tr>
+
+            <tr>
+              <td>4</td>
+              <td>Application name goes here</td>
+              <td>3 Servers</td>
+              <td>11/12/2020 3: 57:29PM</td>
+              <td>Healthy</td>
+              <td><button>View result</button></td>
+            </tr>
+
+            <tr>
+              <td>4</td>
+              <td>Application name goes here</td>
+              <td>3 Servers</td>
+              <td>11/12/2020 3: 57:29PM</td>
+              <td>Healthy</td>
+              <td><button>View result</button></td>
+            </tr>
+
+            <tr>
+              <td>5</td>
+              <td>Application name goes here</td>
+              <td>3 Servers</td>
+              <td>11/12/2020 3: 57:29PM</td>
+              <td>Healthy</td>
+              <td><button>View result</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div> -->
+    </div>
+  </div>
+</div>
